@@ -10,7 +10,6 @@ import javax.print.attribute.standard.Destination;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.amigodobolso.amigodobolso.domain.exception.ResourceBadRequestException;
 import com.amigodobolso.amigodobolso.domain.exception.ResourceNotFoundException;
@@ -19,7 +18,6 @@ import com.amigodobolso.amigodobolso.domain.repository.UsuarioRepository;
 import com.amigodobolso.amigodobolso.dto.usuario.UsuarioRequestDto;
 import com.amigodobolso.amigodobolso.dto.usuario.UsuarioResponseDto;
 
-@Service
 public class UsuarioService implements ICRUDService<UsuarioRequestDto, UsuarioResponseDto> {
 
     @Autowired
@@ -40,7 +38,7 @@ public class UsuarioService implements ICRUDService<UsuarioRequestDto, UsuarioRe
 
         usuario.setId(id);
         usuario.setDataInativacao(usuarioBanco.getDataInativacao());
-        usuario.setDataCadastro(usuarioBanco.getDataCadastro());
+       // usuario.setDataCadastro(usuarioBanco.getDataCadastro());
 
         usuario = usuarioRepository.save(usuario);
 
@@ -51,11 +49,11 @@ public class UsuarioService implements ICRUDService<UsuarioRequestDto, UsuarioRe
     public UsuarioResponseDto cadastrar(UsuarioRequestDto dto) {
         validarUsuario(dto);
 
-        Optional<Usuario> optUsuario = usuarioRepository.findByEmail(dto.getEmail());
+       // Optional<Usuario> optUsuario = usuarioRepository.findByEmail(dto.getEmail());
 
-        if(optUsuario.isPresent()){
-            throw new ResourceBadRequestException("Já existe um usuário cadastro com o e-mail: " + dto.getEmail());
-        }
+        //if(optUsuario.isPresent()){
+        //    throw new ResourceBadRequestException("Já existe um usuário cadastro com o e-mail: " + dto.getEmail());
+       // }
 
         Usuario usuario = mapper.map(dto, Usuario.class);
 

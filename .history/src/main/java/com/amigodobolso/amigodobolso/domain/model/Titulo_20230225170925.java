@@ -3,7 +3,7 @@ package com.amigodobolso.amigodobolso.domain.model;
 import java.util.Date;
 import java.util.List;
 
-import com.amigodobolso.amigodobolso.domain.Enum.ETipoTitulo;
+import com.example.meusgastos.domain.Enum.ETipoTitulo;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

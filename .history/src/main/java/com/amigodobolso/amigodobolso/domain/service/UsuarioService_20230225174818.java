@@ -51,7 +51,7 @@ public class UsuarioService implements ICRUDService<UsuarioRequestDto, UsuarioRe
     public UsuarioResponseDto cadastrar(UsuarioRequestDto dto) {
         validarUsuario(dto);
 
-        Optional<Usuario> optUsuario = usuarioRepository.findByEmail(dto.getEmail());
+        Optional<Usuario> optUsuario = usuarioRepository.findByEmail(dto.getEmail())
 
         if(optUsuario.isPresent()){
             throw new ResourceBadRequestException("Já existe um usuário cadastro com o e-mail: " + dto.getEmail());
